@@ -110,6 +110,11 @@ public class HanteraKurs extends javax.swing.JFrame {
         });
 
         kursBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dada1", "Dada2", "Charms1", "Herbology 1" }));
+        kursBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kursBoxActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Kursnamn att ta bort:");
 
@@ -127,16 +132,16 @@ public class HanteraKurs extends javax.swing.JFrame {
                         .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kursLaggTillKurs, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kursAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startLayout.createSequentialGroup()
-                                .addComponent(kursTaBortKurs, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))
+                                .addComponent(jLabel1)
+                                .addGap(38, 38, 38))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startLayout.createSequentialGroup()
-                                .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(kursBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(38, 38, 38))))))
+                                    .addComponent(kursTaBortKurs, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(46, 46, 46))))))
         );
         startLayout.setVerticalGroup(
             startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,6 +166,12 @@ public class HanteraKurs extends javax.swing.JFrame {
         );
 
         mainPanel.add(start, "start");
+
+        kursnamn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kursnamnActionPerformed(evt);
+            }
+        });
 
         kursTillbaka.setText("Tillbaka");
         kursTillbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -370,11 +381,13 @@ public class HanteraKurs extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Stänger ner denna ruta
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Tar bort den valda kursen från databasen med hjälp av en SQL fråga
     private void kursTaBortKursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursTaBortKursActionPerformed
         try{
         
@@ -391,6 +404,7 @@ public class HanteraKurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_kursTaBortKursActionPerformed
 
+    //Lägger till en kurs med det data som laggts in i fälten med hjälp av SQL frågor
     private void laggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laggTillActionPerformed
         try {
             String kursNamn = kursnamn.getText();
@@ -417,28 +431,33 @@ public class HanteraKurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_laggTillActionPerformed
 
+    //Byter till rutan start
     private void kursTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursTillbakaActionPerformed
           CardLayout card = (CardLayout)mainPanel.getLayout();
           card.show(mainPanel, "start");
     }//GEN-LAST:event_kursTillbakaActionPerformed
 
+    //Byter till rutan start
     private void andraTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraTillbakaActionPerformed
          CardLayout card = (CardLayout)mainPanel.getLayout();
          card.show(mainPanel, "start");
     }//GEN-LAST:event_andraTillbakaActionPerformed
 
+    //Byter till rutan laggTillKurs
     private void kursLaggTillKursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursLaggTillKursActionPerformed
           
           CardLayout card = (CardLayout)mainPanel.getLayout();
           card.show(mainPanel, "laggTillKurs");
     }//GEN-LAST:event_kursLaggTillKursActionPerformed
-
+    
+    //Byter till rutan andraKurs
     private void kursAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursAndraActionPerformed
           
           CardLayout card = (CardLayout)mainPanel.getLayout();
           card.show(mainPanel, "andraKurs");
     }//GEN-LAST:event_kursAndraActionPerformed
 
+    //Uppdaterar ändringarna som gjorts på kursen med hjälp av datan i fälten och SQL frågor
     private void sparaAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaAndringActionPerformed
          try {
 
@@ -468,6 +487,14 @@ public class HanteraKurs extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_sparaAndringActionPerformed
+
+    private void kursBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kursBoxActionPerformed
+
+    private void kursnamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursnamnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_kursnamnActionPerformed
 
     
 

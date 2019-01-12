@@ -51,6 +51,11 @@ public class KursBetyg extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         betygBetyg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "T", "D", "P", "A", "E", "O" }));
+        betygBetyg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                betygBetygActionPerformed(evt);
+            }
+        });
 
         betygTilllbaka.setText("Tillbaka");
         betygTilllbaka.addActionListener(new java.awt.event.ActionListener() {
@@ -142,6 +147,7 @@ public class KursBetyg extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Lägger till ett betyg i en specifik kurs till den valda eleven med hjälp av comboboxar och SQL frågor
     private void betygLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygLaggTillActionPerformed
         try {
             String efternamnet = betygEfternamn.getText();
@@ -166,6 +172,7 @@ public class KursBetyg extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_betygLaggTillActionPerformed
 
+    //Ändrar betyget i en specifik kurs till den valda eleven med hjälp av comboboxar och SQL frågor
     private void betygAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygAndraActionPerformed
         try {
 
@@ -193,10 +200,15 @@ public class KursBetyg extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_betygAndraActionPerformed
 
+    //Stänger denna ruta
     private void betygTilllbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygTilllbakaActionPerformed
      
         this.dispose();
     }//GEN-LAST:event_betygTilllbakaActionPerformed
+
+    private void betygBetygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygBetygActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_betygBetygActionPerformed
 
     
 

@@ -128,7 +128,7 @@ public class HanteraLarare extends javax.swing.JFrame {
                         .addGap(63, 63, 63)
                         .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(startTaBort, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(startLaggTill, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                            .addComponent(startLaggTill, javax.swing.GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE))
                         .addGap(32, 32, 32)
                         .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(startAndra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -325,6 +325,12 @@ public class HanteraLarare extends javax.swing.JFrame {
             }
         });
 
+        adminLarareBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminLarareBoxActionPerformed(evt);
+            }
+        });
+
         jLabel12.setText("Ange lärare:");
 
         javax.swing.GroupLayout geBehorighetLayout = new javax.swing.GroupLayout(geBehorighet);
@@ -487,10 +493,12 @@ public class HanteraLarare extends javax.swing.JFrame {
         }   
     }//GEN-LAST:event_andraEfterNamnActionPerformed
 
+    //Stänger ner denna ruta
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //Ger behörighet till den valda läraren med hjälp av en combobox och SQL frågor
     private void behorighetGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behorighetGeActionPerformed
         try {
              String larare = (String) adminLarareBox.getSelectedItem();
@@ -522,46 +530,55 @@ public class HanteraLarare extends javax.swing.JFrame {
         
     }//GEN-LAST:event_taBortLarareActionPerformed
 
+        //Byter till rutan start
     private void bortTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bortTillbakaActionPerformed
       CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "start");
     }//GEN-LAST:event_bortTillbakaActionPerformed
 
+    //Byter till rutan start
     private void behorighetTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behorighetTillbakaActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "start");
     }//GEN-LAST:event_behorighetTillbakaActionPerformed
 
+        //Byter till rutan start
     private void andraTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraTillbakaActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "start");
     }//GEN-LAST:event_andraTillbakaActionPerformed
 
+    //Byter till rutan start
     private void larareTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_larareTillbakaActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "start");
     }//GEN-LAST:event_larareTillbakaActionPerformed
 
+        //Byter till rutan taBort
     private void startTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startTaBortActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "taBort");
     }//GEN-LAST:event_startTaBortActionPerformed
 
+        //Byter till rutan laggTill
     private void startLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startLaggTillActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "laggTill");
     }//GEN-LAST:event_startLaggTillActionPerformed
 
+        //Byter till rutan andra
     private void startAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startAndraActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "andra");
     }//GEN-LAST:event_startAndraActionPerformed
 
+        //Byter till rutan geBehorighet
     private void startGeBehorighetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGeBehorighetActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "geBehorighet");
     }//GEN-LAST:event_startGeBehorighetActionPerformed
 
+    //Tar bort behörigheten på den valda läraren med hjälp av en combobox och SQL frågor
     private void taBortAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortAdminActionPerformed
         try {
              String larare = (String)adminLarareBox.getSelectedItem();
@@ -578,6 +595,10 @@ public class HanteraLarare extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
     }//GEN-LAST:event_taBortAdminActionPerformed
+
+    private void adminLarareBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminLarareBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adminLarareBoxActionPerformed
 
    
 

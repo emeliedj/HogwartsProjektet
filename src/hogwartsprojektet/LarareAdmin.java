@@ -145,16 +145,19 @@ public class LarareAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Visar JFramen för HanteraElev
     private void hanteraElevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraElevActionPerformed
         
         new HanteraElev(idb).setVisible(true);
     }//GEN-LAST:event_hanteraElevActionPerformed
 
+    //Visar JFramen för Poang
     private void poangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poangActionPerformed
      
         new Poang(idb).setVisible(true);
     }//GEN-LAST:event_poangActionPerformed
 
+    //Visar JFramen för KursBetyg
     private void kursBetygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursBetygActionPerformed
      
         new KursBetyg(idb).setVisible(true);

@@ -127,11 +127,11 @@ public class Validering {
             String efternamn = angivetEfternamn.getText();
             String fraga = "SELECT ELEV_ID from ELEV WHERE FORNAMN = '" + fornamn + "' AND EFTERNAMN = '" + efternamn + "'";
             String id = idb.fetchSingle(fraga);
-            angivetFornamn.requestFocus();
-
+            
             if (id == null) {
                 JOptionPane.showMessageDialog(null, "Eleven finns inte");
                 resultat = false;
+                angivetFornamn.requestFocus();
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Eleven finns inte");
