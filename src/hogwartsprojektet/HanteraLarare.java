@@ -451,6 +451,7 @@ public class HanteraLarare extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void larareLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_larareLaggTillActionPerformed
+    if(Validering.omRutaTom(larareFornamn) && Validering.omRutaTom(larareEfternamn) && Validering.omRutaTom(larareLosen)){     
         try {
             String lararId = idb.getAutoIncrement("LARARE", "LARAR_ID");
             String fornamnet = larareFornamn.getText();
@@ -464,9 +465,11 @@ public class HanteraLarare extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
     }//GEN-LAST:event_larareLaggTillActionPerformed
 
     private void andraEfterNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraEfterNamnActionPerformed
+    if(Validering.omRutaTom(andraFornamn) && Validering.omRutaTom(andraEfternamn)){     
         try {
             String nyttNamn = (String)larareBox.getSelectedItem();
             String larareFornamnet = nyttNamn.split(" ")[0];
@@ -484,7 +487,8 @@ public class HanteraLarare extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Namn ändrat till " + fornamnet + " " + efternamnet );
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
-        }   
+        }  
+    }
     }//GEN-LAST:event_andraEfterNamnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -493,7 +497,7 @@ public class HanteraLarare extends javax.swing.JFrame {
 
     private void behorighetGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behorighetGeActionPerformed
         try {
-             String larare = (String) adminLarareBox.getSelectedItem();
+             String larare = (String)adminLarareBox.getSelectedItem();
                 String larareFornamnet = larare.split(" ")[0];
                 String larareEfternamnet = larare.split(" ")[1];
 
@@ -502,6 +506,7 @@ public class HanteraLarare extends javax.swing.JFrame {
             
                 String admin = "UPDATE LARARE SET ADMINISTRATOR = 'T' WHERE FORNAMN = '" + larareFornamnet + "' AND EFTERNAMN = '" + larareEfternamnet + "'";
             idb.update(admin);
+            ComboBox.cboxLaggTillLarare(adminLarareBox);
             JOptionPane.showMessageDialog(null, "Lärare med namnet " + larareFornamnet + " " + larareEfternamnet + " har nu admin behörighet");
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
@@ -509,6 +514,7 @@ public class HanteraLarare extends javax.swing.JFrame {
     }//GEN-LAST:event_behorighetGeActionPerformed
 
     private void taBortLarareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortLarareActionPerformed
+    if(Validering.omRutaTom(bortFornamn) && Validering.omRutaTom(bortEfternamn)){     
         try {
             String fornamnet = bortFornamn.getText();
             String efternamnet = bortEfternamn.getText();
@@ -519,6 +525,7 @@ public class HanteraLarare extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
         
     }//GEN-LAST:event_taBortLarareActionPerformed
 

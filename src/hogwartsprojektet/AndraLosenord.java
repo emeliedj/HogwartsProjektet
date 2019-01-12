@@ -120,6 +120,7 @@ public class AndraLosenord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void losenAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_losenAndringActionPerformed
+        if(Validering.omRutaTom(losenGammalt) && (Validering.omRutaTom(losenNytt) && Validering.omRutaTom(losenNyttIgen))){
         try {
             String gammaltLosen = losenGammalt.getText();
             String nyttLosen1 = losenNytt.getText();
@@ -133,6 +134,7 @@ public class AndraLosenord extends javax.swing.JFrame {
 
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
+        }
         }
     }//GEN-LAST:event_losenAndringActionPerformed
 

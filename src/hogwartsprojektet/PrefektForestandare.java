@@ -138,7 +138,8 @@ public class PrefektForestandare extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void prefektAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefektAndringActionPerformed
-         try {
+    if(Validering.omRutaTom(prefektFornamn) && Validering.omRutaTom(prefektEfternamn)){      
+        try {
             String fornamnet = prefektFornamn.getText();
             String efternamnet = prefektEfternamn.getText();
             String elevhemmet = (String) prefektElevhem.getSelectedItem();
@@ -153,9 +154,11 @@ public class PrefektForestandare extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+    }
     }//GEN-LAST:event_prefektAndringActionPerformed
 
     private void prefektForestandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefektForestandareActionPerformed
+     if(Validering.omRutaTom(prefektFornamn) && Validering.omRutaTom(prefektEfternamn)){     
         try {
             String fornamnet = prefektFornamn.getText();
             String efternamnet = prefektEfternamn.getText();
@@ -171,6 +174,7 @@ public class PrefektForestandare extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+     }
     }//GEN-LAST:event_prefektForestandareActionPerformed
 
     private void prefektTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefektTillbakaActionPerformed

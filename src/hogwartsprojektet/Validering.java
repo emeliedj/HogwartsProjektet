@@ -140,17 +140,17 @@ public class Validering {
             
             if(id != null){
            
-            resultat = false;
+            resultat = true;
             }
-            else{
+            if(resultat == false){
                  JOptionPane.showMessageDialog(null, "Eleven finns inte");
             }
             }
         
         catch(InfException e){
-            JOptionPane.showMessageDialog(null, "Eleven finns inte");
+            JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + e.getMessage());
-            resultat = false;
+            
         }
         return resultat;
 }

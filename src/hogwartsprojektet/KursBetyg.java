@@ -143,6 +143,7 @@ public class KursBetyg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void betygLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygLaggTillActionPerformed
+    if(Validering.omRutaTom(betygFornamn) && Validering.omRutaTom(betygEfternamn)){     
         try {
             String efternamnet = betygEfternamn.getText();
             String fornamnet = betygFornamn.getText();
@@ -164,9 +165,11 @@ public class KursBetyg extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
     }//GEN-LAST:event_betygLaggTillActionPerformed
 
     private void betygAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygAndraActionPerformed
+    if(Validering.omRutaTom(betygFornamn) && Validering.omRutaTom(betygEfternamn)){     
         try {
 
             String efternamnet = betygEfternamn.getText();
@@ -191,6 +194,7 @@ public class KursBetyg extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+    }
     }//GEN-LAST:event_betygAndraActionPerformed
 
     private void betygTilllbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygTilllbakaActionPerformed

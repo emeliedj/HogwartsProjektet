@@ -114,17 +114,17 @@ public class RaderaElev extends javax.swing.JFrame {
     }//GEN-LAST:event_raderaTillbakaActionPerformed
 
     private void raderaTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raderaTaBortActionPerformed
-        try {
-        String fornamnet = raderaFornamn.getText();
-        String efternamnet = raderaEfternamn.getText();
-        String radera = "DELETE FROM ELEV WHERE ELEV.FORNAMN = '" + fornamnet + "' AND ELEV.EFTERNAMN = '" + efternamnet + "'";
-        idb.delete(radera);
-        JOptionPane.showMessageDialog(null, "Elev med " + fornamnet + " " + efternamnet + " har tagits bort");
-    }
-    
-    catch(InfException e){
-        JOptionPane.showMessageDialog(null, "Något gick snett");
-    }
+        if (Validering.omRutaTom(raderaFornamn) && Validering.omRutaTom(raderaEfternamn)) {
+            try {
+                String fornamnet = raderaFornamn.getText();
+                String efternamnet = raderaEfternamn.getText();
+                String radera = "DELETE FROM ELEV WHERE ELEV.FORNAMN = '" + fornamnet + "' AND ELEV.EFTERNAMN = '" + efternamnet + "'";
+                idb.delete(radera);
+                JOptionPane.showMessageDialog(null, "Elev med " + fornamnet + " " + efternamnet + " har tagits bort");
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick snett");
+            }
+        }
     }//GEN-LAST:event_raderaTaBortActionPerformed
 
    

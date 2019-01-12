@@ -142,43 +142,41 @@ public class LarareKurs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaActionPerformed
-    try{ 
-        String kursstart = startDatum.getText();
-        String kursslut = slutDatum.getText();
-        String lararnamn = (String)larareBox.getSelectedItem();
-        
-        String fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
-        System.out.println(fragan);
-        ArrayList<String> kursNamn = idb.fetchColumn(fragan);
-        
-        fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
-        System.out.println(fragan);
-        ArrayList<String> slut = idb.fetchColumn(fragan);
-        
-        fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
-        System.out.println(fragan);
-        ArrayList<String> start = idb.fetchColumn(fragan);
-        
-        String svaret = " ";
-        try{
-        for(int i = 0; i < start.size(); i++){
-            svaret += kursNamn.get(i) + "\n";
-            
-       }
-        }
-        catch(NullPointerException e) {
-            System.out.println("Tom loop");
-            JOptionPane.showMessageDialog(null, "Något gick snett");
-        }
-     
-        
-        resultat.setText(svaret);
-        }
-        
-        catch(InfException e){
-            
-            JOptionPane.showMessageDialog(null, "Något gick snett");
-            System.out.println("Internt fel meddelande" + e.getMessage());
+        if (Validering.omRutaTom(startDatum) && Validering.omRutaTom(slutDatum)) {
+            try {
+                String kursstart = startDatum.getText();
+                String kursslut = slutDatum.getText();
+                String lararnamn = (String) larareBox.getSelectedItem();
+
+                String fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
+                System.out.println(fragan);
+                ArrayList<String> kursNamn = idb.fetchColumn(fragan);
+
+                fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
+                System.out.println(fragan);
+                ArrayList<String> slut = idb.fetchColumn(fragan);
+
+                fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
+                System.out.println(fragan);
+                ArrayList<String> start = idb.fetchColumn(fragan);
+
+                String svaret = " ";
+                try {
+                    for (int i = 0; i < start.size(); i++) {
+                        svaret += kursNamn.get(i) + "\n";
+
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println("Tom loop");
+                    JOptionPane.showMessageDialog(null, "Något gick snett");
+                }
+
+                resultat.setText(svaret);
+            } catch (InfException e) {
+
+                JOptionPane.showMessageDialog(null, "Något gick snett");
+                System.out.println("Internt fel meddelande" + e.getMessage());
+            }
         }
     }//GEN-LAST:event_visaActionPerformed
 

@@ -122,6 +122,7 @@ public class Poang extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void draAvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_draAvActionPerformed
+     if(Validering.omRutaTom(antalPoang)){    
         try {
             String elevhemmet = (String)vilketElevhem.getSelectedItem();
             String poangen = antalPoang.getText();
@@ -134,9 +135,11 @@ public class Poang extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+     }
     }//GEN-LAST:event_draAvActionPerformed
 
     private void laggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laggTillActionPerformed
+    if(Validering.omRutaTom(antalPoang)){     
         try {
             String elevhemmet = (String)vilketElevhem.getSelectedItem();
             String poangen = antalPoang.getText();
@@ -149,6 +152,7 @@ public class Poang extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
     }//GEN-LAST:event_laggTillActionPerformed
 
     private void poangTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poangTillbakaActionPerformed

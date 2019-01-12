@@ -113,55 +113,59 @@ public class HanteraElev extends javax.swing.JFrame {
         nyElevLayout.setHorizontalGroup(
             nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nyElevLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(26, 26, 26)
-                .addComponent(sovsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nyElevLayout.createSequentialGroup()
-                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(12, 12, 12)
+                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(nyElevLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(5, 5, 5)
                         .addComponent(nyElevTillbaka)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nyElevAndraSovsal)
-                        .addGap(28, 28, 28)
-                        .addComponent(nyElevAndraNamn))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, nyElevLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(nyElevLayout.createSequentialGroup()
+                        .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nyElevAndraSovsal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nyElevAndraNamn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                         .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                        .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(efternamn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nyElevLaggTill))
-                        .addGap(149, 149, 149)))
-                .addGap(29, 29, 29))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(25, 25, 25)))
+                .addGap(14, 14, 14)
+                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(efternamn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fornamn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sovsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nyElevLaggTill))
+                .addGap(56, 56, 56))
         );
         nyElevLayout.setVerticalGroup(
             nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nyElevLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(fornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nyElevLayout.createSequentialGroup()
+                .addContainerGap(51, Short.MAX_VALUE)
+                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nyElevLayout.createSequentialGroup()
+                        .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(fornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(23, 23, 23))
+                    .addComponent(nyElevAndraNamn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(efternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2))
+                    .addGroup(nyElevLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(nyElevAndraSovsal, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(7, 7, 7)
                 .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(sovsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(efternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(nyElevLaggTill)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nyElevTillbaka)
-                    .addComponent(nyElevAndraNamn)
-                    .addComponent(nyElevAndraSovsal))
+                .addGroup(nyElevLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(nyElevLayout.createSequentialGroup()
+                        .addGap(57, 57, 57)
+                        .addComponent(nyElevTillbaka))
+                    .addGroup(nyElevLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(nyElevLaggTill)))
                 .addGap(19, 19, 19))
         );
 
@@ -367,18 +371,13 @@ public class HanteraElev extends javax.swing.JFrame {
         card.show(mainpanel, "andraNamn");
     }//GEN-LAST:event_nyElevAndraNamnActionPerformed
 
-    private void nyElevAndraSovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevAndraSovsalActionPerformed
-        
-        CardLayout card = (CardLayout)mainpanel.getLayout();
-        card.show(mainpanel, "andraSovsal");
-    }//GEN-LAST:event_nyElevAndraSovsalActionPerformed
-
     private void andraSovsalTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraSovsalTillbakaActionPerformed
         CardLayout card = (CardLayout)mainpanel.getLayout();
         card.show(mainpanel, "nyElev");
     }//GEN-LAST:event_andraSovsalTillbakaActionPerformed
 
     private void nyElevLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevLaggTillActionPerformed
+    if(Validering.omRutaTom(fornamn) && Validering.omRutaTom(efternamn)){    
         try {
 
             String fornamnet = fornamn.getText();
@@ -395,41 +394,35 @@ public class HanteraElev extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
 
     }//GEN-LAST:event_nyElevLaggTillActionPerformed
 
     private void nySovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nySovsalActionPerformed
        
-      try {
-            if(Validering.omRutaTom(sovsalFornamn) && (Validering.omRutaTom(sovsalEfternamn))){
+        try {
+            if (Validering.omRutaTom(sovsalFornamn) && (Validering.omRutaTom(sovsalEfternamn) && Validering.omElevFinns(sovsalFornamn, sovsalEfternamn))) {
 
-            String fornamnet = sovsalFornamn.getText();
-            String efternamnet = sovsalEfternamn.getText();
-            String sovsalen = (String) sovsalBox.getSelectedItem();
-            int sovsalInt = Integer.parseInt(sovsalen);
-            String dbFornamn = idb.fetchSingle("SELECT FORNAMN FROM ELEV WHERE FORNAMN = '" + fornamnet + "'" );
-            String dbEfternamn = idb.fetchSingle("SELECT EFTERNAMN FROM ELEV WHERE EFTERNAMN = '" + efternamnet + "'");
-            
-            if(Validering.omElevFinns(fornamnet, efternamnet)){
-                
-                if(!fornamn.equals(dbFornamn) && !efternamnet.equals(dbEfternamn)){
-                    
-                    JOptionPane.showMessageDialog(null, "Elev finns inte");
-                }
+                String fornamnet = sovsalFornamn.getText();
+                String efternamnet = sovsalEfternamn.getText();
+                String sovsalen = (String) sovsalBox.getSelectedItem();
+                int sovsalInt = Integer.parseInt(sovsalen);
 
-            String sovsalandring = "UPDATE ELEV SET SOVSAL =" + sovsalInt + "WHERE ELEV.FORNAMN ='" + fornamnet + " AND ELEV.EFTERNAMN =" + efternamnet + "'";
-            idb.update(sovsalandring);
-            JOptionPane.showMessageDialog(null, "Sovsal för" + " " + fornamnet + " " + efternamnet + "har blivit uppdaterad");
-            }}
-            } catch (InfException e) {
+                String sovsalandring = "UPDATE ELEV SET SOVSAL =" + sovsalInt + "WHERE ELEV.FORNAMN ='" + fornamnet + " AND ELEV.EFTERNAMN =" + efternamnet + "'";
+                idb.update(sovsalandring);
+                JOptionPane.showMessageDialog(null, "Sovsal för" + " " + fornamnet + " " + efternamnet + "har blivit uppdaterad");
+
+            }
+        } catch (InfException e) {
 
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
-        
-      
+
+
     }//GEN-LAST:event_nySovsalActionPerformed
 
     private void nyFornamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyFornamnActionPerformed
+    if(Validering.omRutaTom(namnNyttNamn) && Validering.omRutaTom(namnEfternamn) && Validering.omRutaTom(namnFornamn)){    
         try {
            
           
@@ -446,10 +439,12 @@ public class HanteraElev extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+    }
         
     }//GEN-LAST:event_nyFornamnActionPerformed
 
     private void nyEfternamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyEfternamnActionPerformed
+    if(Validering.omRutaTom(namnNyttNamn) && Validering.omRutaTom(namnEfternamn) && Validering.omRutaTom(namnFornamn)){    
         try {
             String nynamn = namnNyttNamn.getText();
             String fornamnet = namnFornamn.getText();
@@ -463,12 +458,19 @@ public class HanteraElev extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+    }
     }//GEN-LAST:event_nyEfternamnActionPerformed
 
     private void namnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namnTillbakaActionPerformed
         CardLayout card = (CardLayout)mainpanel.getLayout();
         card.show(mainpanel, "nyElev");
     }//GEN-LAST:event_namnTillbakaActionPerformed
+
+    private void nyElevAndraSovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevAndraSovsalActionPerformed
+
+        CardLayout card = (CardLayout)mainpanel.getLayout();
+        card.show(mainpanel, "andraSovsal");
+    }//GEN-LAST:event_nyElevAndraSovsalActionPerformed
 
     
 

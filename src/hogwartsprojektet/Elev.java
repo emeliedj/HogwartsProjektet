@@ -214,6 +214,8 @@ public class Elev extends javax.swing.JFrame {
     }//GEN-LAST:event_elevVisaElevhemActionPerformed
 
     private void elevKurserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevKurserActionPerformed
+        if(Validering.omRutaTom(elevFornamn) && Validering.omRutaTom(elevEfternamn)){
+        
         try {
             String namn1 = elevFornamn.getText();
             String namn2 = elevEfternamn.getText();
@@ -238,6 +240,7 @@ public class Elev extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Något gick snett!");
         }
+        }
     }//GEN-LAST:event_elevKurserActionPerformed
 
     private void elevTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevTillbakaActionPerformed
@@ -257,7 +260,7 @@ public class Elev extends javax.swing.JFrame {
        
        String svar = " ";
        for(int i= 0; i<elevhemmen.size(); i++){
-           svar += elevhemmen.get(i) + " " + huspoangen.get(i) + "\n";
+           svar += elevhemmen.get(i) + "  har " + huspoangen.get(i) + " antal poäng " + "\n";
        }
         resultat.setText(svar);
       
@@ -269,17 +272,20 @@ public class Elev extends javax.swing.JFrame {
     }//GEN-LAST:event_elevPokalenActionPerformed
 
     private void elevBetygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevBetygActionPerformed
+        if(Validering.omRutaTom(elevFornamn) && Validering.omRutaTom(elevEfternamn)){
         try {
 
             String namn1 = elevFornamn.getText();
             String namn2 = elevEfternamn.getText();
-            String fragan = "SELECT KURSBETYG FROM HAR_BETYG_I JOIN ELEV ON ELEV.ELEV_ID = HAR_BETYG_I.ELEV_ID WHERE ELEV.FORNAMN = '" + namn1 + "' AND ELEV.EFTERNAMN = '" + namn2 + "'";
+            String fragan = "SELECT KURS.KURSNAMN FROM ELEV JOIN HAR_BETYG_I ON HAR_BETYG_I.ELEV_ID = ELEV.ELEV_ID JOIN KURS ON KURS.KURS_ID = HAR_BETYG_I.KURS_ID WHERE ELEV.FORNAMN = '" + namn1 + "' AND ELEV.EFTERNAMN = '" + namn2 + "' ";
+            ArrayList <String> kurs = idb.fetchColumn(fragan);
+            fragan = "SELECT KURSBETYG FROM HAR_BETYG_I JOIN ELEV ON ELEV.ELEV_ID = HAR_BETYG_I.ELEV_ID WHERE ELEV.FORNAMN = '" + namn1 + "' AND ELEV.EFTERNAMN = '" + namn2 + "'";
             ArrayList<String> kursbetyg = idb.fetchColumn(fragan);
 
             String svar = " ";
             try{
             for (int i = 0; i < kursbetyg.size(); i++) {
-                svar += kursbetyg.get(i) + "\n";
+                svar += kursbetyg.get(i) + " i kursen " + kurs.get(i) + "\n";
             }
             }
             catch(NullPointerException e){
@@ -295,6 +301,7 @@ public class Elev extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "något gick snett");
 
+        }
         }
     }//GEN-LAST:event_elevBetygActionPerformed
 

@@ -101,7 +101,7 @@ public class LarareInlogg extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+     if(Validering.omRutaTom(losenUser) && Validering.omRutaTom(losenPass)){
        try {
            String anvandare = losenUser.getText();
             String losenord = losenPass.getText();
@@ -130,6 +130,7 @@ public class LarareInlogg extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+     }
    
         
     }//GEN-LAST:event_jButton1ActionPerformed
