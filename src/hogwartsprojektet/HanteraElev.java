@@ -400,7 +400,7 @@ public class HanteraElev extends javax.swing.JFrame {
 
     private void nySovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nySovsalActionPerformed
        
-      if(Validering.omRutaTom(sovsalFornamn) && (Validering.omRutaTom(sovsalEfternamn)) ){
+      if(Validering.omRutaTom(sovsalFornamn) && (Validering.omRutaTom(sovsalEfternamn)) && (Validering.) ){
         try {
 
             String fornamnet = sovsalFornamn.getText();
