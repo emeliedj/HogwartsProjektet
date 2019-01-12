@@ -125,21 +125,28 @@ public class Validering {
    
     //Kollar om eleven finns.
     public static boolean omElevFinns(JTextField angivetFornamn, JTextField angivetEfternamn){
-        boolean resultat = true;
+        boolean resultat = false;
        
         try {
             String fornamn = angivetFornamn.getText();
             String efternamn = angivetEfternamn.getText();
             String fraga = "SELECT ELEV_ID from ELEV WHERE FORNAMN = '" + fornamn + "' AND EFTERNAMN = '" + efternamn + "'";
+            System.out.println(fraga);
+
             String id = idb.fetchSingle(fraga);
-            //HashMap<String, String> sokElev = idb.fetchRow(fraga);
+            System.out.println(id);
+            
             angivetFornamn.requestFocus();
             
-            if(id == null){
-            JOptionPane.showMessageDialog(null, "Eleven finns inte");
+            if(id != null){
+           
             resultat = false;
             }
-        }
+            else{
+                 JOptionPane.showMessageDialog(null, "Eleven finns inte");
+            }
+            }
+        
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Eleven finns inte");
             System.out.println("Internt felmeddelande" + e.getMessage());
