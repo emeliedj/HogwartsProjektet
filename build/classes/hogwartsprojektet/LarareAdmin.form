@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="45" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="poang" max="32767" attributes="0"/>
+                  <Component id="hanteraElev" max="32767" attributes="0"/>
+                  <Component id="kursBetyg" alignment="0" max="32767" attributes="0"/>
+                  <Component id="andraLosen" alignment="0" pref="149" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="hanteraKurs" max="32767" attributes="0"/>
+                  <Component id="hanteraLarare" alignment="1" pref="146" max="32767" attributes="0"/>
+                  <Component id="taBortElev" alignment="1" max="32767" attributes="0"/>
+                  <Component id="prefektForestandare" pref="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="taBortElev" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="hanteraElev" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="poang" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="hanteraLarare" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="kursBetyg" min="-2" max="-2" attributes="0"/>
+                  <Component id="hanteraKurs" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="prefektForestandare" min="-2" max="-2" attributes="0"/>
+                  <Component id="andraLosen" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="90" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="hanteraElev">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hantera elev"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hanteraElevActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="taBortElev">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ta bort elev"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="taBortElevActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="poang">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Po&#xe4;ng"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="poangActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="hanteraLarare">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hantera l&#xe4;rare"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hanteraLarareActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="kursBetyg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kursbetyg"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kursBetygActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="hanteraKurs">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hantera kurs"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hanteraKursActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="andraLosen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc4;ndra l&#xf6;senord"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="andraLosenActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="prefektForestandare">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Prefekt/ F&#xf6;rest&#xe5;ndare"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="prefektForestandareActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
