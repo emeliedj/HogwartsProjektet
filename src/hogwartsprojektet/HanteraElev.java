@@ -400,7 +400,7 @@ public class HanteraElev extends javax.swing.JFrame {
 
     private void nySovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nySovsalActionPerformed
        
-      if(Validering.omRutaTom(sovsalFornamn) &&  ){
+      if(Validering.omRutaTom(sovsalFornamn) && (Validering.omRutaTom(sovsalEfternamn)) ){
         try {
 
             String fornamnet = sovsalFornamn.getText();
@@ -408,13 +408,14 @@ public class HanteraElev extends javax.swing.JFrame {
             String sovsalen = (String) sovsalBox.getSelectedItem();
             int sovsalInt = Integer.parseInt(sovsalen);
 
-            String sovsalandring = "UPDATE ELEV SET SOVSAL =" + sovsalInt + "WHERE ELEV.FORNAMN ='" + fornamnet + "AND ELEV.EFTERNAMN =" + efternamnet + "'";
+            String sovsalandring = "UPDATE ELEV SET SOVSAL =" + sovsalInt + "WHERE ELEV.FORNAMN ='" + fornamnet + " AND ELEV.EFTERNAMN =" + efternamnet + "'";
             idb.update(sovsalandring);
             JOptionPane.showMessageDialog(null, "Sovsal för" + " " + fornamnet + " " + efternamnet + "har blivit uppdaterad");
         } catch (InfException e) {
 
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+      }
     }//GEN-LAST:event_nySovsalActionPerformed
 
     private void nyFornamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyFornamnActionPerformed
