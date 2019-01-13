@@ -5,6 +5,8 @@
  */
 package hogwartsprojektet;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -41,8 +43,6 @@ public class LarareKurs extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         resultat = new javax.swing.JTextArea();
-        startDatum = new javax.swing.JTextField();
-        slutDatum = new javax.swing.JTextField();
         larareBox = new javax.swing.JComboBox<>();
         ComboBox.cboxLaggTillLarare(larareBox);
         jLabel1 = new javax.swing.JLabel();
@@ -50,6 +50,8 @@ public class LarareKurs extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         visa = new javax.swing.JButton();
         larareKursTillbaka = new javax.swing.JButton();
+        startDatum = new com.toedter.calendar.JDateChooser();
+        slutDatum = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,15 +88,10 @@ public class LarareKurs extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(startDatum, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                                    .addComponent(slutDatum)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(59, 59, 59)
                                 .addComponent(jLabel1))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
+                                .addGap(19, 19, 19)
                                 .addComponent(larareKursTillbaka)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(visa)))
@@ -106,8 +103,13 @@ public class LarareKurs extends javax.swing.JFrame {
                             .addComponent(larareBox, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
-                        .addComponent(jLabel2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addComponent(jLabel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(slutDatum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(startDatum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16))
         );
@@ -122,12 +124,13 @@ public class LarareKurs extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(37, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addComponent(startDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(slutDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(13, 13, 13)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(larareBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -142,21 +145,23 @@ public class LarareKurs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void visaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visaActionPerformed
-        if (Validering.omRutaTom(startDatum) && Validering.omRutaTom(slutDatum)) {
+        DateFormat formatDatum = new SimpleDateFormat("YYYY-MM-dd");
             try {
-                String kursstart = startDatum.getText();
-                String kursslut = slutDatum.getText();
+                String formatStartDatum = formatDatum.format(startDatum.getDate());
+                String formatSlutDatum = formatDatum.format(slutDatum.getDate());
                 String lararnamn = (String) larareBox.getSelectedItem();
+                String larareFornamnet = lararnamn.split(" ")[0];
+                
 
-                String fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
+                String fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + larareFornamnet + "'AND KURS.KURSSTART >= '" + formatStartDatum + "' AND KURS.KURSSLUT <= '" + formatSlutDatum + "'";
                 System.out.println(fragan);
                 ArrayList<String> kursNamn = idb.fetchColumn(fragan);
 
-                fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
+                fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + larareFornamnet + "'AND KURS.KURSSTART >= '" + formatStartDatum + "' AND KURS.KURSSLUT <= '" + formatSlutDatum + "'";
                 System.out.println(fragan);
                 ArrayList<String> slut = idb.fetchColumn(fragan);
 
-                fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + lararnamn + "'AND KURS.KURSSTART >= '" + kursstart + "' AND KURS.KURSSLUT <= '" + kursslut + "'";
+                fragan = "SELECT KURS.KURSNAMN FROM KURS JOIN LARARE ON LARARE.LARAR_ID = KURS.KURSLARARE WHERE LARARE.FORNAMN ='" + larareFornamnet + "'AND KURS.KURSSTART >= '" + formatStartDatum + "' AND KURS.KURSSLUT <= '" + formatSlutDatum + "'";
                 System.out.println(fragan);
                 ArrayList<String> start = idb.fetchColumn(fragan);
 
@@ -168,7 +173,7 @@ public class LarareKurs extends javax.swing.JFrame {
                     }
                 } catch (NullPointerException e) {
                     System.out.println("Tom loop");
-                    JOptionPane.showMessageDialog(null, "Något gick snett");
+                    JOptionPane.showMessageDialog(null, "Lärare undervisar ingen kurs mellan dessa datum");
                 }
 
                 resultat.setText(svaret);
@@ -177,7 +182,7 @@ public class LarareKurs extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Något gick snett");
                 System.out.println("Internt fel meddelande" + e.getMessage());
             }
-        }
+        
     }//GEN-LAST:event_visaActionPerformed
 
     private void larareKursTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_larareKursTillbakaActionPerformed
@@ -196,8 +201,8 @@ public class LarareKurs extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> larareBox;
     private javax.swing.JButton larareKursTillbaka;
     private javax.swing.JTextArea resultat;
-    private javax.swing.JTextField slutDatum;
-    private javax.swing.JTextField startDatum;
+    private com.toedter.calendar.JDateChooser slutDatum;
+    private com.toedter.calendar.JDateChooser startDatum;
     private javax.swing.JButton visa;
     // End of variables declaration//GEN-END:variables
 }

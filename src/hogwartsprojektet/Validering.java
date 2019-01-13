@@ -84,20 +84,21 @@ public class Validering {
     public static boolean omAnvandareFinns(JTextField angivenRuta) {
         boolean resultat = false;
         try {
-            String name = "SELECT LARARE.EFTERNAMN FROM LARARE";
-            ArrayList<String> nameArray = idb.fetchColumn(name);
+         
+            String fraga = "SELECT FORNAMN FROM LARARE";
+            ArrayList <String> fornamnen = idb.fetchColumn(fraga);
+            System.out.println(fornamnen);
+            for (String ettNamn : fornamnen){
+            if (ettNamn.equals(angivenRuta.getText())) {
 
-            for (String currentName : nameArray) {
-                if (currentName.equals(angivenRuta.getText())) {
-                    resultat = true;
-                }
-            }
-
-            if (!resultat) {
+                resultat = true;
+                
+            } else {
                 JOptionPane.showMessageDialog(null, "Fel användarnamn!");
                 angivenRuta.requestFocus();
             }
-        } catch (InfException e) {
+
+        } }catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }

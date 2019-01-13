@@ -43,6 +43,8 @@ public class AndraLosenord extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         losenAndring = new javax.swing.JButton();
         losenTillbaka = new javax.swing.JButton();
+        losenUser = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,6 +68,8 @@ public class AndraLosenord extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Användarnamn:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -73,31 +77,44 @@ public class AndraLosenord extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(losenTillbaka)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(73, 73, 73)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(25, 25, 25)
+                                .addComponent(losenTillbaka))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(losenUser, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(losenAndring)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(losenGammalt, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                         .addComponent(losenNytt)
-                        .addComponent(losenNyttIgen)))
+                        .addComponent(losenNyttIgen)
+                        .addComponent(losenGammalt, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(losenUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(losenGammalt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(42, 42, 42)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(losenNytt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -109,7 +126,7 @@ public class AndraLosenord extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(losenAndring)
-                        .addContainerGap(39, Short.MAX_VALUE))
+                        .addContainerGap(49, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(losenTillbaka)
@@ -120,12 +137,13 @@ public class AndraLosenord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void losenAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_losenAndringActionPerformed
-        if(Validering.omRutaTom(losenGammalt) && (Validering.omRutaTom(losenNytt) && Validering.omRutaTom(losenNyttIgen))){
+        if(Validering.omRutaTom(losenGammalt) && (Validering.omRutaTom(losenNytt) && Validering.omRutaTom(losenNyttIgen) && Validering.omAnvandareFinns(losenUser))){
         try {
+            String anvandare = losenUser.getText();
             String gammaltLosen = losenGammalt.getText();
             String nyttLosen1 = losenNytt.getText();
             String nyttLosen2 = losenNyttIgen.getText();
-            String andring = "UPDATE LARARE SET LARARE.LOSENORD = '" + nyttLosen1 + "' WHERE LARARE.LOSENORD = '" + gammaltLosen + "'";
+            String andring = "UPDATE LARARE SET LARARE.LOSENORD = '" + nyttLosen1 + "' WHERE LARARE.LOSENORD = '" + gammaltLosen + "' AND FORNAMN = '" + anvandare + "'";
 
             if (nyttLosen1.equals(nyttLosen2)) {
                 idb.update(andring);
@@ -148,10 +166,12 @@ public class AndraLosenord extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton losenAndring;
     private javax.swing.JTextField losenGammalt;
     private javax.swing.JPasswordField losenNytt;
     private javax.swing.JPasswordField losenNyttIgen;
     private javax.swing.JButton losenTillbaka;
+    private javax.swing.JTextField losenUser;
     // End of variables declaration//GEN-END:variables
 }
