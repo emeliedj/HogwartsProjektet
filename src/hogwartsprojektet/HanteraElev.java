@@ -108,6 +108,11 @@ public class HanteraElev extends javax.swing.JFrame {
         jLabel3.setText("Sovsal nr:");
 
         sovsal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16" }));
+        sovsal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sovsalActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Skriv in elev information:");
 
@@ -365,22 +370,26 @@ public class HanteraElev extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Stänger denna ruta
     private void nyElevTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevTillbakaActionPerformed
         
         this.dispose();
     }//GEN-LAST:event_nyElevTillbakaActionPerformed
 
+    //Ändrar namn på eleven med hjälp av fälten
     private void nyElevAndraNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevAndraNamnActionPerformed
         
         CardLayout card = (CardLayout)mainpanel.getLayout();
         card.show(mainpanel, "andraNamn");
     }//GEN-LAST:event_nyElevAndraNamnActionPerformed
 
+    //Visar panelen nyElev
     private void andraSovsalTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraSovsalTillbakaActionPerformed
         CardLayout card = (CardLayout)mainpanel.getLayout();
         card.show(mainpanel, "nyElev");
     }//GEN-LAST:event_andraSovsalTillbakaActionPerformed
 
+    //Lägger till eleven med hjälp av fälten, combobox och SQL frågor
     private void nyElevLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevLaggTillActionPerformed
     if(Validering.omRutaTom(fornamn) && Validering.omRutaTom(efternamn)){    
         try {
@@ -403,6 +412,7 @@ public class HanteraElev extends javax.swing.JFrame {
 
     }//GEN-LAST:event_nyElevLaggTillActionPerformed
 
+    //Uppdaterar sovsalen med hjälp av combobox och SQL frågor
     private void nySovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nySovsalActionPerformed
        
         try {
@@ -426,6 +436,7 @@ public class HanteraElev extends javax.swing.JFrame {
 
     }//GEN-LAST:event_nySovsalActionPerformed
 
+    //Uppdaterar elevens förnamn med hjälp av combobox och SQL frågor
     private void nyFornamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyFornamnActionPerformed
     if(Validering.omRutaTom(namnNyttNamn) && Validering.omRutaTom(namnEfternamn) && Validering.omRutaTom(namnFornamn)){    
         try {
@@ -448,6 +459,7 @@ public class HanteraElev extends javax.swing.JFrame {
         
     }//GEN-LAST:event_nyFornamnActionPerformed
 
+    //Uppdaterar elevens efternamn med hjälp av combobox och SQL frågor
     private void nyEfternamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyEfternamnActionPerformed
     if(Validering.omRutaTom(namnNyttNamn) && Validering.omRutaTom(namnEfternamn) && Validering.omRutaTom(namnFornamn)){    
         try {
@@ -466,16 +478,22 @@ public class HanteraElev extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_nyEfternamnActionPerformed
 
+    //Visar panelen nyElev
     private void namnTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namnTillbakaActionPerformed
         CardLayout card = (CardLayout)mainpanel.getLayout();
         card.show(mainpanel, "nyElev");
     }//GEN-LAST:event_namnTillbakaActionPerformed
 
+    //Ändrar sovsal för eleven med hjälp av fälten och comboboxer
     private void nyElevAndraSovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nyElevAndraSovsalActionPerformed
 
         CardLayout card = (CardLayout)mainpanel.getLayout();
         card.show(mainpanel, "andraSovsal");
     }//GEN-LAST:event_nyElevAndraSovsalActionPerformed
+
+    private void sovsalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sovsalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sovsalActionPerformed
 
     
 

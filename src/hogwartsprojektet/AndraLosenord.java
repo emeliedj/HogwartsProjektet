@@ -136,6 +136,7 @@ public class AndraLosenord extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Sparar ändringarna med hjälp av den inmatade datan i fälten samt SQL frågor
     private void losenAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_losenAndringActionPerformed
     if(Validering.omRutaTom(losenGammalt) && (Validering.omRutaTom(losenNytt) && Validering.omRutaTom(losenNyttIgen) && Validering.omAnvandareFinns(losenUser))){
         try {
@@ -156,6 +157,7 @@ public class AndraLosenord extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_losenAndringActionPerformed
 
+    //Stänger denna ruta
     private void losenTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_losenTillbakaActionPerformed
      
         this.dispose();

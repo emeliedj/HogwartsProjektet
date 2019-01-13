@@ -450,6 +450,7 @@ public class HanteraLarare extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Lägger till lärare med hjälp av data i fälten samt SQL frågor
     private void larareLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_larareLaggTillActionPerformed
     if(Validering.omRutaTom(larareFornamn) && Validering.omRutaTom(larareEfternamn) && Validering.omRutaTom(larareLosen)){     
         try {
@@ -471,6 +472,7 @@ public class HanteraLarare extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_larareLaggTillActionPerformed
 
+    //Uppdaterar lärare med hjälp av data i fälten samt SQL frågor
     private void andraEfterNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraEfterNamnActionPerformed
     if(Validering.omRutaTom(andraFornamn) && Validering.omRutaTom(andraEfternamn)){     
         try {
@@ -521,6 +523,7 @@ public class HanteraLarare extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_behorighetGeActionPerformed
 
+    //Tar bort lärare med hjälp av data i fälten samt SQL frågor
     private void taBortLarareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortLarareActionPerformed
          
         try {
@@ -541,7 +544,7 @@ public class HanteraLarare extends javax.swing.JFrame {
         
     }//GEN-LAST:event_taBortLarareActionPerformed
 
-        //Byter till rutan start
+    //Byter till rutan start
     private void bortTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bortTillbakaActionPerformed
       CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "start");
@@ -565,25 +568,25 @@ public class HanteraLarare extends javax.swing.JFrame {
         card.show(mainPanel, "start");
     }//GEN-LAST:event_larareTillbakaActionPerformed
 
-        //Byter till rutan taBort
+    //Byter till rutan taBort
     private void startTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startTaBortActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "taBort");
     }//GEN-LAST:event_startTaBortActionPerformed
 
-        //Byter till rutan laggTill
+    //Byter till rutan laggTill
     private void startLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startLaggTillActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "laggTill");
     }//GEN-LAST:event_startLaggTillActionPerformed
 
-        //Byter till rutan andra
+    //Byter till rutan andra
     private void startAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startAndraActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "andra");
     }//GEN-LAST:event_startAndraActionPerformed
 
-        //Byter till rutan geBehorighet
+    //Byter till rutan geBehorighet
     private void startGeBehorighetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startGeBehorighetActionPerformed
         CardLayout card = (CardLayout)mainPanel.getLayout();
         card.show(mainPanel, "geBehorighet");
