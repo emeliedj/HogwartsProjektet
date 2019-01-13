@@ -6,6 +6,8 @@
 package hogwartsprojektet;
 
 import java.awt.CardLayout;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -43,6 +45,7 @@ public class HanteraKurs extends javax.swing.JFrame {
         kursAndra = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         kursBox = new javax.swing.JComboBox<>();
+        ComboBox.cboxLaggTillKurs(kursBox);
         jLabel1 = new javax.swing.JLabel();
         laggTillKurs = new javax.swing.JPanel();
         kursnamn = new javax.swing.JTextField();
@@ -50,8 +53,6 @@ public class HanteraKurs extends javax.swing.JFrame {
         ComboBox.cboxLaggTillLarare(larareBox);
         amne = new javax.swing.JComboBox<>();
         ComboBox.cboxLaggTillAmne(amne);
-        kursKursstart = new javax.swing.JTextField();
-        kursKursslut = new javax.swing.JTextField();
         kursTillbaka = new javax.swing.JButton();
         laggTill = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -59,13 +60,13 @@ public class HanteraKurs extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        startDatum = new com.toedter.calendar.JDateChooser();
+        slutDatum = new com.toedter.calendar.JDateChooser();
         andraKurs = new javax.swing.JPanel();
         andraTillbaka = new javax.swing.JButton();
         kursNamnBox = new javax.swing.JComboBox<>();
         ComboBox.cboxLaggTillKurs(kursNamnBox);
         nyttNamn = new javax.swing.JTextField();
-        andraKursstart = new javax.swing.JTextField();
-        andraKursslut = new javax.swing.JTextField();
         andraLarare = new javax.swing.JComboBox<>();
         ComboBox.cboxLaggTillLarare(andraLarare);
         andraAmne = new javax.swing.JComboBox<>();
@@ -76,6 +77,8 @@ public class HanteraKurs extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        startDatumet = new com.toedter.calendar.JDateChooser();
+        slutDatumet = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,13 +112,6 @@ public class HanteraKurs extends javax.swing.JFrame {
             }
         });
 
-        kursBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dada1", "Dada2", "Charms1", "Herbology 1" }));
-        kursBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kursBoxActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Kursnamn att ta bort:");
 
         javax.swing.GroupLayout startLayout = new javax.swing.GroupLayout(start);
@@ -125,23 +121,20 @@ public class HanteraKurs extends javax.swing.JFrame {
             .addGroup(startLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, startLayout.createSequentialGroup()
+                    .addGroup(startLayout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(startLayout.createSequentialGroup()
                         .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(kursLaggTillKurs, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(kursAndra, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                         .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(38, 38, 38))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, startLayout.createSequentialGroup()
-                                .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(kursBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(kursTaBortKurs, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(46, 46, 46))))))
+                            .addComponent(jLabel1)
+                            .addGroup(startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(kursBox, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(kursTaBortKurs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)))
+                        .addGap(38, 38, 38))))
         );
         startLayout.setVerticalGroup(
             startLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,33 +197,41 @@ public class HanteraKurs extends javax.swing.JFrame {
             .addGroup(laggTillKursLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(kursTillbaka)
-                .addGap(128, 128, 128)
+                .addGap(121, 121, 121)
                 .addComponent(laggTill)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, laggTillKursLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
                 .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(laggTillKursLayout.createSequentialGroup()
-                        .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(kursKursstart)
-                            .addComponent(larareBox, 0, 83, Short.MAX_VALUE)))
-                    .addGroup(laggTillKursLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, laggTillKursLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(kursnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(27, 27, 27)
-                .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(kursnamn, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, laggTillKursLayout.createSequentialGroup()
+                        .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(laggTillKursLayout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel3)
+                                .addGap(16, 16, 16))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, laggTillKursLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4)))
+                        .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(laggTillKursLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(startDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, laggTillKursLayout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(larareBox, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(amne, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kursKursslut, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(slutDatum, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(amne, 0, 106, Short.MAX_VALUE))
+                .addGap(36, 36, 36))
         );
         laggTillKursLayout.setVerticalGroup(
             laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,13 +246,14 @@ public class HanteraKurs extends javax.swing.JFrame {
                     .addComponent(larareBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5))
-                .addGap(39, 39, 39)
-                .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kursKursslut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kursKursstart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel6))
-                .addGap(48, 48, 48)
+                .addGap(30, 30, 30)
+                .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(startDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slutDatum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(52, 52, 52)
                 .addGroup(laggTillKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kursTillbaka)
                     .addComponent(laggTill))
@@ -303,33 +305,33 @@ public class HanteraKurs extends javax.swing.JFrame {
                     .addGroup(andraKursLayout.createSequentialGroup()
                         .addGap(116, 116, 116)
                         .addComponent(sparaAndring)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(andraKursLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
                         .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(andraLarare, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(kursNamnBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 100, Short.MAX_VALUE)
-                                .addComponent(andraKursstart, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(18, 18, 18)
-                        .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(andraKursLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(kursNamnBox, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, andraKursLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(andraLarare, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(startDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
+                        .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, andraKursLayout.createSequentialGroup()
                                 .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(andraKursLayout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(andraKursslut, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, andraKursLayout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(andraAmne, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(32, Short.MAX_VALUE))
-                            .addGroup(andraKursLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(slutDatumet, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                                    .addComponent(andraAmne, 0, 1, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, andraKursLayout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
-                                .addComponent(nyttNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(nyttNamn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 22, Short.MAX_VALUE))))
         );
         andraKursLayout.setVerticalGroup(
             andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,19 +342,20 @@ public class HanteraKurs extends javax.swing.JFrame {
                     .addComponent(nyttNamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
-                .addGap(42, 42, 42)
+                .addGap(33, 33, 33)
+                .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel11))
+                    .addComponent(startDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(slutDatumet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(andraKursstart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(andraKursslut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(andraLarare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(andraAmne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel12))
-                .addGap(37, 37, 37)
+                    .addComponent(andraLarare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(andraAmne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addGroup(andraKursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(andraTillbaka)
                     .addComponent(sparaAndring))
@@ -394,6 +397,8 @@ public class HanteraKurs extends javax.swing.JFrame {
             String kursNamn = (String)kursBox.getSelectedItem();
             String andring = "DELETE FROM KURS WHERE KURSNAMN = '" + kursNamn + "'";
             idb.delete(andring);
+            ComboBox.cboxLaggTillKurs(kursBox);
+            ComboBox.cboxLaggTillKurs(kursNamnBox);
             JOptionPane.showMessageDialog(null, "Kurs har blivit raderad");
             
         }
@@ -406,28 +411,39 @@ public class HanteraKurs extends javax.swing.JFrame {
 
     //Lägger till en kurs med det data som laggts in i fälten med hjälp av SQL frågor
     private void laggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laggTillActionPerformed
-        try {
-            String kursNamn = kursnamn.getText();
-            String lararen = (String) larareBox.getSelectedItem();
-            String amnet = (String) amne.getSelectedItem();
-            String kursstart = kursKursstart.getText();
-            String kursslut = kursKursslut.getText();
-            String increment = idb.getAutoIncrement("KURS", "KURS_ID");
+        if (Validering.omRutaTom(kursnamn)) {
+            DateFormat formatDatum = new SimpleDateFormat("YYYY-MM-dd");
+            try {
+                String kursNamn = kursnamn.getText();
+                String lararen = (String) larareBox.getSelectedItem();
+                String larareFornamnet = lararen.split(" ")[0];
+                System.out.println(larareFornamnet);
+                String larareEfternamnet = lararen.split(" ")[1];
+                System.out.println(larareEfternamnet);
+                String amnet = (String) amne.getSelectedItem();
+                String formatStartDatum = formatDatum.format(slutDatum.getDate());
+                String formatSlutDatum = formatDatum.format(startDatum.getDate());
+                String increment = idb.getAutoIncrement("KURS", "KURS_ID");
 
-            String fragaLarare = "SELECT LARAR_ID FROM LARARE WHERE LARARE.FORNAMN = '" + lararen + "'";
-            String lararID = idb.fetchSingle(fragaLarare);
+                String fragaLarare = "SELECT LARAR_ID FROM LARARE WHERE LARARE.FORNAMN = '" + larareFornamnet + "'AND LARARE.EFTERNAMN = '" + larareEfternamnet + "'";
+                String lararID = idb.fetchSingle(fragaLarare);
+                System.out.println(lararID);
 
-            String fragaAmne = "SELECT AMNE_ID FROM AMNE WHERE AMNESNAMN = '" + amnet + "'";
-            String amneID = idb.fetchSingle(fragaAmne);
+                String fragaAmne = "SELECT AMNE_ID FROM AMNE WHERE AMNESNAMN = '" + amnet + "'";
+                String amneID = idb.fetchSingle(fragaAmne);
+                System.out.println(amneID);
 
-            String tillagdKurs = "INSERT INTO KURS VALUES ('" + increment + "','" + kursNamn + "','" + kursstart + "','" + kursslut + "','" + lararID + "','" + amneID + "')";
-            System.out.println(laggTill);
-            idb.insert(tillagdKurs);
-            ComboBox.cboxLaggTillAmne(amne);
-            ComboBox.cboxLaggTillLarare(larareBox);
-            JOptionPane.showMessageDialog(null, "Kurs har blivit tillagd");
-        } catch (InfException e) {
-            JOptionPane.showMessageDialog(null, "Något gick snett");
+                String tillagdKurs = "INSERT INTO KURS VALUES ('" + increment + "','" + kursNamn + "','" + formatStartDatum + "','" + formatSlutDatum + "','" + lararID + "','" + amneID + "')";
+                System.out.println(laggTill);
+                idb.insert(tillagdKurs);
+                ComboBox.cboxLaggTillAmne(amne);
+                ComboBox.cboxLaggTillLarare(larareBox);
+                ComboBox.cboxLaggTillKurs(kursBox);
+                ComboBox.cboxLaggTillKurs(kursNamnBox);
+                JOptionPane.showMessageDialog(null, "Kurs har blivit tillagd");
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick snett");
+            }
         }
     }//GEN-LAST:event_laggTillActionPerformed
 
@@ -459,33 +475,43 @@ public class HanteraKurs extends javax.swing.JFrame {
 
     //Uppdaterar ändringarna som gjorts på kursen med hjälp av datan i fälten och SQL frågor
     private void sparaAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sparaAndringActionPerformed
-         try {
+    if (Validering.omRutaTom(nyttNamn)) {     
+        DateFormat formatDatum = new SimpleDateFormat("YYYY-MM-dd");    
+        try {
 
             String gammalKurs = (String)kursNamnBox.getSelectedItem();
             String nykursNamn = nyttNamn.getText();
             String lararen = (String)andraLarare.getSelectedItem();
+            String larareFornamnet = lararen.split(" ")[0];
+            String lararEfternamnet = lararen.split(" ")[1];
             String amnet = (String)andraAmne.getSelectedItem();
-            String kursstart = andraKursstart.getText();
-            String kursslut = andraKursslut.getText();
+            String kursstart = formatDatum.format(startDatumet.getDate());
+            String kursslut = formatDatum.format(slutDatumet.getDate());
 
             String hamtaID = "SELECT KURS_ID FROM KURS WHERE KURSNAMN = '" + gammalKurs + "'";
             String ID = idb.fetchSingle(hamtaID);
+            System.out.println(ID);
 
-            String fragaLarare = "SELECT LARAR_ID FROM LARARE WHERE LARARE.FORNAMN = '" + lararen + "'";
+            String fragaLarare = "SELECT LARAR_ID FROM LARARE WHERE LARARE.FORNAMN = '" + larareFornamnet + "' AND LARARE.EFTERNAMN = '" + lararEfternamnet + "'";
             String lararID = idb.fetchSingle(fragaLarare);
+            System.out.println(lararID);
 
             String fragaAmne = "SELECT AMNE_ID FROM AMNE WHERE AMNESNAMN = '" + amnet + "'";
             String amneID = idb.fetchSingle(fragaAmne);
+            System.out.println(amneID);
 
             String uppdateraKurs = "UPDATE KURS SET KURS_ID = '" + ID + "', KURSNAMN = '" + nykursNamn + "', KURSSTART = '" + kursstart + "', KURSSLUT = '" + kursslut + "', KURSLARARE = '" + lararID + "', AMNESTILLHORIGHET = '" + amneID + "' WHERE KURSNAMN = '" + gammalKurs + "'";
+            System.out.println(uppdateraKurs);
             idb.update(uppdateraKurs);
             ComboBox.cboxLaggTillLarare(andraLarare);
             ComboBox.cboxLaggTillKurs(kursBox);
+            ComboBox.cboxLaggTillKurs(kursNamnBox);
             JOptionPane.showMessageDialog(null, "Kurs har blivit ändrad");
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+    }
     }//GEN-LAST:event_sparaAndringActionPerformed
 
     private void kursBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kursBoxActionPerformed
@@ -502,8 +528,6 @@ public class HanteraKurs extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> amne;
     private javax.swing.JComboBox<String> andraAmne;
     private javax.swing.JPanel andraKurs;
-    private javax.swing.JTextField andraKursslut;
-    private javax.swing.JTextField andraKursstart;
     private javax.swing.JComboBox<String> andraLarare;
     private javax.swing.JButton andraTillbaka;
     private javax.swing.JButton jButton1;
@@ -521,8 +545,6 @@ public class HanteraKurs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JButton kursAndra;
     private javax.swing.JComboBox<String> kursBox;
-    private javax.swing.JTextField kursKursslut;
-    private javax.swing.JTextField kursKursstart;
     private javax.swing.JButton kursLaggTillKurs;
     private javax.swing.JComboBox<String> kursNamnBox;
     private javax.swing.JButton kursTaBortKurs;
@@ -533,7 +555,11 @@ public class HanteraKurs extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> larareBox;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField nyttNamn;
+    private com.toedter.calendar.JDateChooser slutDatum;
+    private com.toedter.calendar.JDateChooser slutDatumet;
     private javax.swing.JButton sparaAndring;
     private javax.swing.JPanel start;
+    private com.toedter.calendar.JDateChooser startDatum;
+    private com.toedter.calendar.JDateChooser startDatumet;
     // End of variables declaration//GEN-END:variables
 }

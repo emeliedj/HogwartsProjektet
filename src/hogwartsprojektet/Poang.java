@@ -121,7 +121,9 @@ public class Poang extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Drar av poäng från angett elevhem med hjälp av comboboxar och SQL frågor
     private void draAvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_draAvActionPerformed
+     if(Validering.omRutaTom(antalPoang) && Validering.omInt(antalPoang) && Validering.omNegativtTal(antalPoang)){    
         try {
             String elevhemmet = (String)vilketElevhem.getSelectedItem();
             String poangen = antalPoang.getText();
@@ -134,9 +136,12 @@ public class Poang extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+     }
     }//GEN-LAST:event_draAvActionPerformed
 
+    //Tilldelar poäng till angett elevhem med hjälp av comboboxar och SQL frågor
     private void laggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_laggTillActionPerformed
+    if(Validering.omRutaTom(antalPoang) && Validering.omInt(antalPoang) && Validering.omNegativtTal(antalPoang)){     
         try {
             String elevhemmet = (String)vilketElevhem.getSelectedItem();
             String poangen = antalPoang.getText();
@@ -149,8 +154,10 @@ public class Poang extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
     }//GEN-LAST:event_laggTillActionPerformed
 
+    //Stänger ner denna ruta
     private void poangTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_poangTillbakaActionPerformed
     
         this.dispose();

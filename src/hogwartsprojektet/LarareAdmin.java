@@ -117,29 +117,32 @@ public class LarareAdmin extends javax.swing.JFrame {
                     .addComponent(hanteraKurs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(hanteraLarare, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
                     .addComponent(taBortElev, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(prefektForestandare, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(prefektForestandare, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(hanteraElev))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(taBortElev)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(taBortElev)
-                    .addComponent(hanteraElev))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(poang, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(poang)
                     .addComponent(hanteraLarare))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(kursBetyg)
                     .addComponent(hanteraKurs))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(prefektForestandare)
-                    .addComponent(andraLosen))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(andraLosen)
+                    .addComponent(prefektForestandare))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,27 +166,32 @@ public class LarareAdmin extends javax.swing.JFrame {
         new KursBetyg(idb).setVisible(true);
     }//GEN-LAST:event_kursBetygActionPerformed
 
+    //Visar JFramen för AndraLosenord
     private void andraLosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraLosenActionPerformed
      
         new AndraLosenord(idb).setVisible(true);
     }//GEN-LAST:event_andraLosenActionPerformed
 
+    //Visar JFramen för PrefektForetandare
     private void prefektForestandareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prefektForestandareActionPerformed
     
         new PrefektForestandare(idb).setVisible(true);
     
     }//GEN-LAST:event_prefektForestandareActionPerformed
 
+    //Visar JFramen för HanteraLarare
     private void hanteraLarareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraLarareActionPerformed
      
         new HanteraLarare(idb).setVisible(true);
     }//GEN-LAST:event_hanteraLarareActionPerformed
 
+    //Visar JFramen för RaderaElev
     private void taBortElevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortElevActionPerformed
         
         new RaderaElev(idb).setVisible(true);
     }//GEN-LAST:event_taBortElevActionPerformed
 
+    //Visar JFramen för HanteraKurs
     private void hanteraKursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hanteraKursActionPerformed
         new HanteraKurs(idb).setVisible(true);
     }//GEN-LAST:event_hanteraKursActionPerformed

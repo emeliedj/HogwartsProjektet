@@ -149,6 +149,7 @@ public class KursBetyg extends javax.swing.JFrame {
 
     //Lägger till ett betyg i en specifik kurs till den valda eleven med hjälp av comboboxar och SQL frågor
     private void betygLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygLaggTillActionPerformed
+    if(Validering.omRutaTom(betygFornamn) && Validering.omRutaTom(betygEfternamn)){     
         try {
             String efternamnet = betygEfternamn.getText();
             String fornamnet = betygFornamn.getText();
@@ -170,10 +171,12 @@ public class KursBetyg extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
     }//GEN-LAST:event_betygLaggTillActionPerformed
 
     //Ändrar betyget i en specifik kurs till den valda eleven med hjälp av comboboxar och SQL frågor
     private void betygAndraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_betygAndraActionPerformed
+    if(Validering.omRutaTom(betygFornamn) && Validering.omRutaTom(betygEfternamn)){     
         try {
 
             String efternamnet = betygEfternamn.getText();
@@ -198,6 +201,7 @@ public class KursBetyg extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Något gick snett");
 
         }
+    }
     }//GEN-LAST:event_betygAndraActionPerformed
 
     //Stänger denna ruta

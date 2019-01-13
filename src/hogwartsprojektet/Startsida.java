@@ -87,11 +87,13 @@ public class Startsida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Byter till rutan Elev, och stänger denna ruta
     private void startsidaElevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startsidaElevActionPerformed
         new Elev(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_startsidaElevActionPerformed
 
+    //Byter till rutan LarareInlogg, och stänger denna ruta
     private void startsidaLarareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startsidaLarareActionPerformed
         new LarareInlogg(idb).setVisible(true);
         this.dispose();

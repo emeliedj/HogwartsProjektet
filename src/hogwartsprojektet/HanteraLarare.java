@@ -72,12 +72,11 @@ public class HanteraLarare extends javax.swing.JFrame {
         ComboBox.cboxLaggTillLarare(adminLarareBox);
         jLabel12 = new javax.swing.JLabel();
         taBort = new javax.swing.JPanel();
-        bortFornamn = new javax.swing.JTextField();
-        bortEfternamn = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         taBortLarare = new javax.swing.JButton();
         bortTillbaka = new javax.swing.JButton();
+        bortLararBox = new javax.swing.JComboBox<>();
+        ComboBox.cboxLaggTillLarare(bortLararBox);
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -252,7 +251,7 @@ public class HanteraLarare extends javax.swing.JFrame {
 
         jLabel7.setText("Efternamn:");
 
-        andraEfterNamn.setText("Uppdatera");
+        andraEfterNamn.setText("Uppdatera namn");
         andraEfterNamn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 andraEfterNamnActionPerformed(evt);
@@ -270,14 +269,14 @@ public class HanteraLarare extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addGroup(andraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(andraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(andraFornamn)
                         .addComponent(andraEfternamn, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                         .addComponent(larareBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(andraEfterNamn))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         andraLayout.setVerticalGroup(
             andraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,44 +337,46 @@ public class HanteraLarare extends javax.swing.JFrame {
         geBehorighetLayout.setHorizontalGroup(
             geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, geBehorighetLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGap(126, 126, 126))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, geBehorighetLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(behorighetTillbaka)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(taBortAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(behorighetGe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(adminLarareBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(77, 77, 77))
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(behorighetTillbaka)
+                    .addGroup(geBehorighetLayout.createSequentialGroup()
+                        .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(taBortAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(behorighetGe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(geBehorighetLayout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(adminLarareBox, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, geBehorighetLayout.createSequentialGroup()
+                                .addGap(84, 84, 84)
+                                .addComponent(jLabel12)
+                                .addGap(43, 43, 43)))))
+                .addGap(33, 33, 33))
         );
         geBehorighetLayout.setVerticalGroup(
             geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(geBehorighetLayout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
-                .addComponent(jLabel12)
-                .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(geBehorighetLayout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(behorighetTillbaka)
-                        .addGap(17, 17, 17))
-                    .addGroup(geBehorighetLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(adminLarareBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(71, 71, 71)
+                        .addComponent(jLabel12)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, geBehorighetLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(taBortAdmin)
-                        .addGap(18, 18, 18)
-                        .addComponent(behorighetGe)
-                        .addGap(28, 28, 28))))
+                        .addGap(9, 9, 9)))
+                .addGroup(geBehorighetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adminLarareBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(geBehorighetLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(behorighetGe)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(behorighetTillbaka)
+                .addGap(17, 17, 17))
         );
 
         mainPanel.add(geBehorighet, "geBehorighet");
-
-        jLabel10.setText("Förnamn:");
-
-        jLabel11.setText("Efternamn:");
 
         taBortLarare.setText("Ta bort lärare");
         taBortLarare.addActionListener(new java.awt.event.ActionListener() {
@@ -391,43 +392,36 @@ public class HanteraLarare extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setText("Ange den lärare du vill ta bort:");
+
         javax.swing.GroupLayout taBortLayout = new javax.swing.GroupLayout(taBort);
         taBort.setLayout(taBortLayout);
         taBortLayout.setHorizontalGroup(
             taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, taBortLayout.createSequentialGroup()
+            .addGroup(taBortLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(bortTillbaka))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addGroup(taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(bortEfternamn)
-                    .addComponent(bortFornamn)
-                    .addComponent(taBortLarare, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(108, 108, 108))
+                    .addComponent(bortTillbaka, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(taBortLarare)
+                        .addGroup(taBortLayout.createSequentialGroup()
+                            .addComponent(jLabel8)
+                            .addGap(18, 18, 18)
+                            .addComponent(bortLararBox, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(108, Short.MAX_VALUE))
         );
         taBortLayout.setVerticalGroup(
             taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(taBortLayout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addGroup(taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bortFornamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addGap(45, 45, 45)
-                .addGroup(taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bortEfternamn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGroup(taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(taBortLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bortTillbaka)
-                        .addGap(29, 29, 29))
-                    .addGroup(taBortLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(taBortLarare)
-                        .addContainerGap(55, Short.MAX_VALUE))))
+                .addGap(95, 95, 95)
+                .addGroup(taBortLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(bortLararBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addComponent(taBortLarare)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addComponent(bortTillbaka)
+                .addGap(29, 29, 29))
         );
 
         mainPanel.add(taBort, "taBort");
@@ -457,6 +451,7 @@ public class HanteraLarare extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void larareLaggTillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_larareLaggTillActionPerformed
+    if(Validering.omRutaTom(larareFornamn) && Validering.omRutaTom(larareEfternamn) && Validering.omRutaTom(larareLosen)){     
         try {
             String lararId = idb.getAutoIncrement("LARARE", "LARAR_ID");
             String fornamnet = larareFornamn.getText();
@@ -466,13 +461,18 @@ public class HanteraLarare extends javax.swing.JFrame {
 
             String andring = "INSERT INTO LARARE VALUES(" + lararId + "," + "'" + fornamnet + "','" + efternamnet + "','" + losenord + "','" + admin + "')";
             idb.insert(andring);
+            ComboBox.cboxLaggTillLarare(larareBox);
+            ComboBox.cboxLaggTillLarare(bortLararBox);
+            ComboBox.cboxLaggTillLarare(adminLarareBox);
             JOptionPane.showMessageDialog(null, "Lärare med namnet " + fornamnet + " " + efternamnet + " har blivit tillagd");
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    }
     }//GEN-LAST:event_larareLaggTillActionPerformed
 
     private void andraEfterNamnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_andraEfterNamnActionPerformed
+    if(Validering.omRutaTom(andraFornamn) && Validering.omRutaTom(andraEfternamn)){     
         try {
             String nyttNamn = (String)larareBox.getSelectedItem();
             String larareFornamnet = nyttNamn.split(" ")[0];
@@ -487,10 +487,13 @@ public class HanteraLarare extends javax.swing.JFrame {
             String andring = "UPDATE LARARE SET FORNAMN = '" + fornamnet + "', EFTERNAMN = '" + efternamnet + "' WHERE LARAR_ID = '" + lararID + "'";
             idb.update(andring);
             ComboBox.cboxLaggTillLarare(larareBox);
+            ComboBox.cboxLaggTillLarare(adminLarareBox);
+            ComboBox.cboxLaggTillLarare(bortLararBox);
             JOptionPane.showMessageDialog(null, "Namn ändrat till " + fornamnet + " " + efternamnet );
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
-        }   
+        }  
+    }
     }//GEN-LAST:event_andraEfterNamnActionPerformed
 
     //Stänger ner denna ruta
@@ -501,7 +504,7 @@ public class HanteraLarare extends javax.swing.JFrame {
     //Ger behörighet till den valda läraren med hjälp av en combobox och SQL frågor
     private void behorighetGeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_behorighetGeActionPerformed
         try {
-             String larare = (String) adminLarareBox.getSelectedItem();
+             String larare = (String)adminLarareBox.getSelectedItem();
                 String larareFornamnet = larare.split(" ")[0];
                 String larareEfternamnet = larare.split(" ")[1];
 
@@ -510,6 +513,8 @@ public class HanteraLarare extends javax.swing.JFrame {
             
                 String admin = "UPDATE LARARE SET ADMINISTRATOR = 'T' WHERE FORNAMN = '" + larareFornamnet + "' AND EFTERNAMN = '" + larareEfternamnet + "'";
             idb.update(admin);
+            ComboBox.cboxLaggTillLarare(adminLarareBox);
+            ComboBox.cboxLaggTillLarare(bortLararBox);
             JOptionPane.showMessageDialog(null, "Lärare med namnet " + larareFornamnet + " " + larareEfternamnet + " har nu admin behörighet");
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
@@ -517,16 +522,22 @@ public class HanteraLarare extends javax.swing.JFrame {
     }//GEN-LAST:event_behorighetGeActionPerformed
 
     private void taBortLarareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taBortLarareActionPerformed
+         
         try {
-            String fornamnet = bortFornamn.getText();
-            String efternamnet = bortEfternamn.getText();
+            String nyttNamn = (String)bortLararBox.getSelectedItem();
+            String larareFornamnet = nyttNamn.split(" ")[0];
+            String larareEfternamnet = nyttNamn.split(" ")[1];
 
-            String bortagning = "DELETE FROM LARARE WHERE LARARE.FORNAMN = '" + fornamnet + "' AND LARARE.EFTERNAMN = '" + efternamnet + "'";
+            String bortagning = "DELETE FROM LARARE WHERE LARARE.FORNAMN = '" + larareFornamnet + "' AND LARARE.EFTERNAMN = '" + larareEfternamnet + "'";
             idb.delete(bortagning);
-            JOptionPane.showMessageDialog(null, "Lärare med namnet " + fornamnet + " " + efternamnet + " har raderats");
+            ComboBox.cboxLaggTillLarare(bortLararBox);
+            ComboBox.cboxLaggTillLarare(larareBox);
+            ComboBox.cboxLaggTillLarare(adminLarareBox);
+            JOptionPane.showMessageDialog(null, "Lärare med namnet " + larareFornamnet + " " + larareEfternamnet + " har tagits bort");
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+    
         
     }//GEN-LAST:event_taBortLarareActionPerformed
 
@@ -611,14 +622,11 @@ public class HanteraLarare extends javax.swing.JFrame {
     private javax.swing.JButton andraTillbaka;
     private javax.swing.JButton behorighetGe;
     private javax.swing.JButton behorighetTillbaka;
-    private javax.swing.JTextField bortEfternamn;
-    private javax.swing.JTextField bortFornamn;
+    private javax.swing.JComboBox<String> bortLararBox;
     private javax.swing.JButton bortTillbaka;
     private javax.swing.JPanel geBehorighet;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -626,6 +634,7 @@ public class HanteraLarare extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel laggTill;
     private javax.swing.JComboBox<String> larareAdmin;
     private javax.swing.JComboBox<String> larareBox;

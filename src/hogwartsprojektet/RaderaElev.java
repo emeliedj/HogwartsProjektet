@@ -109,22 +109,24 @@ public class RaderaElev extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Stänger denna ruta
     private void raderaTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raderaTillbakaActionPerformed
         this.dispose();
     }//GEN-LAST:event_raderaTillbakaActionPerformed
 
+    //Tar bort elev med hjälp av inmatad data i fälten och SQL frågor
     private void raderaTaBortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_raderaTaBortActionPerformed
-        try {
-        String fornamnet = raderaFornamn.getText();
-        String efternamnet = raderaEfternamn.getText();
-        String radera = "DELETE FROM ELEV WHERE ELEV.FORNAMN = '" + fornamnet + "' AND ELEV.EFTERNAMN = '" + efternamnet + "'";
-        idb.delete(radera);
-        JOptionPane.showMessageDialog(null, "Elev med " + fornamnet + " " + efternamnet + " har tagits bort");
-    }
-    
-    catch(InfException e){
-        JOptionPane.showMessageDialog(null, "Något gick snett");
-    }
+        if (Validering.omRutaTom(raderaFornamn) && Validering.omRutaTom(raderaEfternamn)) {
+            try {
+                String fornamnet = raderaFornamn.getText();
+                String efternamnet = raderaEfternamn.getText();
+                String radera = "DELETE FROM ELEV WHERE ELEV.FORNAMN = '" + fornamnet + "' AND ELEV.EFTERNAMN = '" + efternamnet + "'";
+                idb.delete(radera);
+                JOptionPane.showMessageDialog(null, "Elev med " + fornamnet + " " + efternamnet + " har tagits bort");
+            } catch (InfException e) {
+                JOptionPane.showMessageDialog(null, "Något gick snett");
+            }
+        }
     }//GEN-LAST:event_raderaTaBortActionPerformed
 
    

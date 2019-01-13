@@ -70,7 +70,7 @@ public class Elev extends javax.swing.JFrame {
             }
         });
 
-        elevVisaElevhem.setText("Visa elevhem");
+        elevVisaElevhem.setText("Visa elever i");
         elevVisaElevhem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 elevVisaElevhemActionPerformed(evt);
@@ -132,7 +132,7 @@ public class Elev extends javax.swing.JFrame {
                     .addComponent(elevLarareKurs, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(elevTillbaka)
                     .addComponent(elevVisaElevhem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -191,6 +191,7 @@ public class Elev extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Visar eleverna som ingår i elevhemmet i comboboxen, med hjälp av SQL frågor
     private void elevVisaElevhemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevVisaElevhemActionPerformed
         try {
             String elevhemmet = (String) elevElevhem.getSelectedItem();
@@ -213,7 +214,10 @@ public class Elev extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elevVisaElevhemActionPerformed
 
+    //Visar kurserna på eleven som skrivs in i fälten, med hjälp av SQL frågor
     private void elevKurserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevKurserActionPerformed
+        if(Validering.omRutaTom(elevFornamn) && Validering.omRutaTom(elevEfternamn)){
+        
         try {
             String namn1 = elevFornamn.getText();
             String namn2 = elevEfternamn.getText();
@@ -238,13 +242,16 @@ public class Elev extends javax.swing.JFrame {
         catch(InfException e){
             JOptionPane.showMessageDialog(null, "Något gick snett!");
         }
+        }
     }//GEN-LAST:event_elevKurserActionPerformed
 
+    //Ständer ner denna ruta
     private void elevTillbakaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevTillbakaActionPerformed
         new Startsida(idb).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_elevTillbakaActionPerformed
 
+    //Visar poängställningen av elevhemspokalen, med hjälp av SQL frågor
     private void elevPokalenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevPokalenActionPerformed
         try{
        
@@ -257,7 +264,7 @@ public class Elev extends javax.swing.JFrame {
        
        String svar = " ";
        for(int i= 0; i<elevhemmen.size(); i++){
-           svar += elevhemmen.get(i) + " " + huspoangen.get(i) + "\n";
+           svar += elevhemmen.get(i) + "  har " + huspoangen.get(i) + " antal poäng " + "\n";
        }
         resultat.setText(svar);
       
@@ -268,18 +275,22 @@ public class Elev extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elevPokalenActionPerformed
 
+    //Visar betygen på eleven som skrivs in i fälten, med hjälp av SQL frågor
     private void elevBetygActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevBetygActionPerformed
+        if(Validering.omRutaTom(elevFornamn) && Validering.omRutaTom(elevEfternamn)){
         try {
 
             String namn1 = elevFornamn.getText();
             String namn2 = elevEfternamn.getText();
-            String fragan = "SELECT KURSBETYG FROM HAR_BETYG_I JOIN ELEV ON ELEV.ELEV_ID = HAR_BETYG_I.ELEV_ID WHERE ELEV.FORNAMN = '" + namn1 + "' AND ELEV.EFTERNAMN = '" + namn2 + "'";
+            String fragan = "SELECT KURS.KURSNAMN FROM ELEV JOIN HAR_BETYG_I ON HAR_BETYG_I.ELEV_ID = ELEV.ELEV_ID JOIN KURS ON KURS.KURS_ID = HAR_BETYG_I.KURS_ID WHERE ELEV.FORNAMN = '" + namn1 + "' AND ELEV.EFTERNAMN = '" + namn2 + "' ";
+            ArrayList <String> kurs = idb.fetchColumn(fragan);
+            fragan = "SELECT KURSBETYG FROM HAR_BETYG_I JOIN ELEV ON ELEV.ELEV_ID = HAR_BETYG_I.ELEV_ID WHERE ELEV.FORNAMN = '" + namn1 + "' AND ELEV.EFTERNAMN = '" + namn2 + "'";
             ArrayList<String> kursbetyg = idb.fetchColumn(fragan);
 
             String svar = " ";
             try{
             for (int i = 0; i < kursbetyg.size(); i++) {
-                svar += kursbetyg.get(i) + "\n";
+                svar += kursbetyg.get(i) + " i kursen " + kurs.get(i) + "\n";
             }
             }
             catch(NullPointerException e){
@@ -296,8 +307,10 @@ public class Elev extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "något gick snett");
 
         }
+        }
     }//GEN-LAST:event_elevBetygActionPerformed
 
+    //Visar prefekterna som ingår i elevhemmet i comboboxen, med hjälp av SQL frågor
     private void elevPrefektActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevPrefektActionPerformed
         try {
             String elevhemmet = (String) elevElevhem.getSelectedItem();
@@ -318,6 +331,7 @@ public class Elev extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_elevPrefektActionPerformed
 
+    //Visar vilka lärare som ansvarar för vilka kurser, med hjälp av SQL frågor
     private void elevLarareKursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_elevLarareKursActionPerformed
      new LarareKurs(idb).setVisible(true);
      this.dispose();

@@ -80,20 +80,21 @@ public class Validering {
     public static boolean omAnvandareFinns(JTextField angivenRuta) {
         boolean resultat = false;
         try {
-            String name = "SELECT LARARE.EFTERNAMN FROM LARARE";
-            ArrayList<String> nameArray = idb.fetchColumn(name);
+         
+            String fraga = "SELECT FORNAMN FROM LARARE";
+            ArrayList <String> fornamnen = idb.fetchColumn(fraga);
+            System.out.println(fornamnen);
+            for (String ettNamn : fornamnen){
+            if (ettNamn.equals(angivenRuta.getText())) {
 
-            for (String currentName : nameArray) {
-                if (currentName.equals(angivenRuta.getText())) {
-                    resultat = true;
-                }
-            }
-
-            if (!resultat) {
+                resultat = true;
+                
+            } else {
                 JOptionPane.showMessageDialog(null, "Fel användarnamn!");
                 angivenRuta.requestFocus();
             }
-        } catch (InfException e) {
+
+        } }catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + e.getMessage());
         }
@@ -119,24 +120,39 @@ public class Validering {
     }
 
     //Kollar om eleven finns.
-    public static boolean omElevFinns(JTextField angivetFornamn, JTextField angivetEfternamn) {
-        boolean resultat = true;
-
+    public static boolean omElevFinns(JTextField angivetFornamn, JTextField angivetEfternamn){
+        boolean resultat = false;
+       
         try {
             String fornamn = angivetFornamn.getText();
             String efternamn = angivetEfternamn.getText();
             String fraga = "SELECT ELEV_ID from ELEV WHERE FORNAMN = '" + fornamn + "' AND EFTERNAMN = '" + efternamn + "'";
+            System.out.println(fraga);
+
             String id = idb.fetchSingle(fraga);
+            System.out.println(id);
+            
+            angivetFornamn.requestFocus();
             
             if (id == null) {
                 JOptionPane.showMessageDialog(null, "Eleven finns inte");
                 resultat = false;
                 angivetFornamn.requestFocus();
+            if(id != null){
+           
+            resultat = true;
             }
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Eleven finns inte");
+            if(resultat == false){
+                 JOptionPane.showMessageDialog(null, "Eleven finns inte");
+            }
+            }
+        
+        catch(InfException e){
+            JOptionPane.showMessageDialog(null, "Något gick fel");
             System.out.println("Internt felmeddelande" + e.getMessage());
-            resultat = false;
+            
         }
         return resultat;
     }

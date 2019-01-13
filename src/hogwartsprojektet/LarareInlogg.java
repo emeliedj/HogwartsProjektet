@@ -57,6 +57,11 @@ public class LarareInlogg extends javax.swing.JFrame {
         });
 
         jButton2.setText("Tillbaka");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,8 +105,9 @@ public class LarareInlogg extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Loggar in läraren som skrivs in i fälten, med hjälp av SQL frågor
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   
+     if(Validering.omRutaTom(losenUser) && Validering.omRutaTom(losenPass)){
        try {
            String anvandare = losenUser.getText();
             String losenord = losenPass.getText();
@@ -130,9 +136,14 @@ public class LarareInlogg extends javax.swing.JFrame {
         } catch (InfException e) {
             JOptionPane.showMessageDialog(null, "Något gick snett");
         }
+     }
    
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
    
 
