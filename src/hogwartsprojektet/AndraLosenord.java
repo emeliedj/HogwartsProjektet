@@ -137,7 +137,7 @@ public class AndraLosenord extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void losenAndringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_losenAndringActionPerformed
-        if(Validering.omRutaTom(losenGammalt) && (Validering.omRutaTom(losenNytt) && Validering.omRutaTom(losenNyttIgen) && Validering.omAnvandareFinns(losenUser))){
+    if(Validering.omRutaTom(losenGammalt) && (Validering.omRutaTom(losenNytt) && Validering.omRutaTom(losenNyttIgen) && Validering.omAnvandareFinns(losenUser))){
         try {
             String anvandare = losenUser.getText();
             String gammaltLosen = losenGammalt.getText();
